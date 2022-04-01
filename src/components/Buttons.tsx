@@ -1,9 +1,15 @@
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 import { Colors } from "../constants";
+import { MoodOptionType } from "../types";
 
-export const Button: React.FC = () =>{
-    return  <Pressable style = {styles.button} onPress={()=>{}}><Text style = {styles.buttonText}>Choose</Text></Pressable>
+type ButtonProps = {
+    title: string,
+    onPress: () => void,
+}
+
+export const Button: React.FC<ButtonProps> = ({title, onPress}) =>{
+    return  <Pressable style = {styles.button} onPress={onPress}><Text style = {styles.buttonText}>{title.toUpperCase()}</Text></Pressable>
 } 
 
 const styles = StyleSheet.create({

@@ -13,17 +13,26 @@ const moodOptions: MoodOptionType[]  = [
 
 ];
 
-export const MoodPicker: React.FC = ()=>{
-    const [selectedMood, setSelectedMood]=React.useState<MoodOptionType>()
+type MoodPickerProps = {
+    selectMoodHandler: (moodOption: MoodOptionType) => void,
+}
+
+export const MoodPicker: React.FC<MoodPickerProps> = ({selectMoodHandler})=>{
+
+    const [selectedMood, setSelectedMood] = useState<MoodOptionType>()
+
+    const onChooseMoodHandler = () =>{
+        selectedMood && selectMoodHandler(selectedMood)
+        setSelectedMood(undefined)
+    }
     return(
        <View style = {styles.container}>
             <Text style = {styles.header}>How are you right now?</Text>
             <View style={styles.moodOptions}>
-                {moodOptions.map((option, i) => <View style = {{alignItems: 'center'}}>
-                    <Pressable 
-                     key={i} 
+                {moodOptions.map((option) => <View  key = {option.emoji} style = {{alignItems: 'center'}}>
+                    <Pressable  
                      style = {[styles.moodOption, selectedMood?.emoji===option.emoji && styles.selectedMoodOption]}
-                     onPress={()=> setSelectedMood(option)}
+                     onPress={()=> setSelectedMood(option)}                        
                     >
                     <Text style = {styles.emoji}>{option.emoji}</Text>
                     </Pressable>
@@ -31,7 +40,7 @@ export const MoodPicker: React.FC = ()=>{
             </View>
                 )}
             </View>
-           <Button/>
+           <Button title = 'choose' onPress={onChooseMoodHandler}/>
        </View>
     )
 }
@@ -39,6 +48,7 @@ export const MoodPicker: React.FC = ()=>{
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 10,
+        marginBottom: 10,
         paddingVertical: 20,
         borderColor: Colors.purple,
         borderWidth: 2,
@@ -55,8 +65,8 @@ const styles = StyleSheet.create({
 
     moodOptions: {
         flexDirection: "row",
-        justifyContent: 'space-around',
-        marginVertical: 20,
+        justifyContent: 'space-between',
+        marginVertical: 30,
     },
 
     moodOption:{
