@@ -1,12 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { BottomTabsNavigation } from './screens/BottomTabsNavigation';
+import { AppProvider } from './components/AppProvider';
+import { BottomTabsNavigation } from './components/BottomTabsNavigation';
 
 export const App: React.FC = () =>{
   return (
-   <NavigationContainer>
-     <BottomTabsNavigation/>
-   </NavigationContainer>
+    <AppProvider>
+       <NavigationContainer>
+         <BottomTabsNavigation/>
+       </NavigationContainer>
+    </AppProvider>
+  
   )
 }
 

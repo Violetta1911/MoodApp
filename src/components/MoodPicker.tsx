@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import { Colors } from "../constants";
 import { MoodOptionType } from "../types";
 import { Button } from "./Buttons";
@@ -19,11 +19,21 @@ type MoodPickerProps = {
 
 export const MoodPicker: React.FC<MoodPickerProps> = ({selectMoodHandler})=>{
 
-    const [selectedMood, setSelectedMood] = useState<MoodOptionType>()
+    const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
+    const [hasSelected, setHasSelected] = useState<Boolean>(false);
+    
+    const imgSrc = require ('../../assets/buterfly.png')
 
     const onChooseMoodHandler = () =>{
         selectedMood && selectMoodHandler(selectedMood)
         setSelectedMood(undefined)
+        setHasSelected(true)
+    }
+    if(hasSelected){
+        return<View style = {styles.container}>
+              <Image source={imgSrc} style = {styles.image}/>
+            <Button title="Choose another" onPress={()=> setHasSelected(false)}/>
+        </View>
     }
     return(
        <View style = {styles.container}>
@@ -47,10 +57,12 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({selectMoodHandler})=>{
 
 const styles = StyleSheet.create({
     container: {
+        justifyContent: 'space-between',
         marginHorizontal: 10,
         marginBottom: 10,
         paddingVertical: 20,
         borderColor: Colors.purple,
+        backgroundColor: 'rgba(0,0,0,0.2)',
         borderWidth: 2,
         borderRadius: 15,
         alignItems: 'center',
@@ -90,5 +102,11 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: Colors.purple
 
-    }
+    },
+    image: {
+        width: 50,
+        height: 50, 
+        alignSelf: 'center', 
+        marginVertical: 20}
+
 })

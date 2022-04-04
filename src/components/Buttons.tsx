@@ -14,7 +14,7 @@ export const Button: React.FC<ButtonProps> = ({title, onPress}) =>{
 
 const styles = StyleSheet.create({
     button:{
-        width: 150,
+        width: 200,
         paddingHorizontal: 20,
         paddingVertical: 10,
         borderRadius: 20,

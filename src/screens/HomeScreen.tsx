@@ -1,22 +1,17 @@
-import React, {useCallback, useState} from "react";
-import { View } from "react-native";
+import React from "react";
+import {ImageBackground} from "react-native";
 
 // components
 import { MoodPicker } from "../components/MoodPicker";
-import { MoodOptionWithTimestep, MoodOptionType } from "../types";
-import { MoodItemRow } from "../components/MoodItem";
+import { useAppContext } from "../components/AppProvider";
 
+const imageUrl = 'https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDExOHxibzhqUUtUYUUwWXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'
 export const Home: React.FC = ()=>{
-    const [moodList, setMoodList] = useState<MoodOptionWithTimestep[]>([])
-
-    const selectMoodHandler = useCallback((mood: MoodOptionType) => {
-        setMoodList((current) => [...current, {mood, timestap: Date.now()}])
-    }, [])
-
+    const appContext = useAppContext();
+  
     return( 
-        <View style={{justifyContent: 'center', flex: 1}}>
-            <MoodPicker selectMoodHandler = {selectMoodHandler}/>
-            {moodList.map(item => <MoodItemRow key = {item.timestap} item = {item}/>)}
-        </View>
+        <ImageBackground source={{uri: imageUrl}} style={{justifyContent: 'center', flex: 1}}>
+            <MoodPicker selectMoodHandler = {appContext.selectMoodHandler}/>           
+        </ImageBackground>
     )
 }
