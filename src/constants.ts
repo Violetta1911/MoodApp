@@ -5,3 +5,10 @@ export const Colors = {
     blue: '#1D84B5',
     grey: '#8E9AAF' 
 }
+
+export const Fonts = {
+    fontKalamBold: 'Kalam-Bold',
+    fontKalamLight: 'Kalam-Light',
+    fontKalamRegular: 'Kalam-Regular',
+
+    }

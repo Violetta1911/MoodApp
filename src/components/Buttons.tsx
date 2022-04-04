@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
-import { Colors } from "../constants";
+import { Colors, Fonts } from "../constants";
 import { MoodOptionType } from "../types";
 
 type ButtonProps = {
@@ -19,10 +19,12 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 20,
         backgroundColor: Colors.purple
+        
     },
     buttonText: {
         color: Colors.white,
         textAlign: 'center', 
+        fontFamily: Fonts.fontKalamRegular
         
     }
 })

@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { format } from "date-fns";
 
 import { MoodOptionWithTimestep } from "../types";
-import { Colors } from "../constants";
+import { Colors, Fonts } from "../constants";
 
 type MoodItemProps = {
     item: MoodOptionWithTimestep
@@ -38,11 +38,12 @@ const styles = StyleSheet.create({
     },
     iconDescription: {
         fontSize: 13,
-        fontWeight: 'bold',
+        fontFamily: Fonts.fontKalamBold,
         color: Colors.purple
     },
     itemDate:{
-        color: Colors.lavender
+        color: Colors.lavender,
+        fontFamily: Fonts.fontKalamRegular
     }
 
 

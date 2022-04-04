@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Pressable, StyleSheet, Text, View, Image } from "react-native";
-import { Colors } from "../constants";
+import { Colors, Fonts } from "../constants";
 import { MoodOptionType } from "../types";
 import { Button } from "./Buttons";
 
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     header: {
         textAlign: 'center',
         fontSize: 20,
-        fontWeight: 'bold',
         color: Colors.purple,
+        fontFamily: Fonts.fontKalamBold
      },
 
     moodOptions: {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
     descriptionText:{
-        fontWeight: 'bold',
+        fontFamily: Fonts.fontKalamBold,
         fontSize: 10,
         color: Colors.purple
 
