@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import { Colors, Fonts } from "../constants";
-import { MoodOptionType } from "../types";
+import { MoodOptionType, MoodOptionWithTimestep } from "../types";
 import { Button } from "./Buttons";
 
 const moodOptions: MoodOptionType[]  = [
@@ -29,10 +29,11 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({selectMoodHandler})=>{
         setSelectedMood(undefined)
         setHasSelected(true)
     }
+ 
     if(hasSelected){
         return<View style = {styles.container}>
               <Image source={imgSrc} style = {styles.image}/>
-            <Button title="Choose another" onPress={()=> setHasSelected(false)}/>
+              <Button title="Choose another" selectedMood={selectedMood} onPress={()=> setHasSelected(false)}/>
         </View>
     }
     return(
@@ -50,7 +51,7 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({selectMoodHandler})=>{
             </View>
                 )}
             </View>
-           <Button title = 'choose' onPress={onChooseMoodHandler}/>
+           <Button title = 'choose' onPress={onChooseMoodHandler} selectedMood = {selectedMood}/>
        </View>
     )
 }
