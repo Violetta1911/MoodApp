@@ -19,6 +19,10 @@ target 'MoodApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'MoodAppTests' do
     inherit! :complete
     # Pods for testing
